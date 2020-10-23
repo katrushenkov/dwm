@@ -1602,7 +1602,7 @@ run(void)
 
 void
 runAutostart(void) {
-	system("killall -q dwmblocks; dwmblocks &");
+	system("export STATUSBAR=\"dwmblocks\" ; killall dwmblocks ; dwmblocks &");
 }
 
 void

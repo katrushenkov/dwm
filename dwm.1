@@ -28,7 +28,7 @@ dwm draws a small border around windows to indicate the focus state.
 .P
 .I
 libxft-bgra
-should be installed for this build of dwm. Arch users may install it via the
+shold be installed for this build of dwm. Arch users may install it via the
 AUR. Color characters and emoji are enabled, but these will cause crashes
 without the fix
 .I
@@ -117,6 +117,39 @@ Toggle focused window between tiled and floating state.
 .B Super\-Tab
 Toggles to the previously selected tags.
 .TP
+.B Super\-g
+Moves to the previous tag.
+.TP
+.B Super\-Shift\-g
+Moves selected window to the previous tag.
+.TP
+.B Super\-;
+Moves to the next tag.
+.TP
+.B Super\-Shift\-;
+Moves selected window to the next tag.
+.TP
+.B Super\-PageUp
+Moves to the previous tag.
+.TP
+.B Super\-Shift\-PageUp
+Moves selected window to the previous tag.
+.TP
+.B Super\-Pagedown
+Moves to the next tag.
+.TP
+.B Super\-Shift\-PageDown
+Moves selected window to the next tag.
+.TP
+.B Super\-a
+Toggle gaps.
+.TP
+.B Super\-z
+Increase gaps between windows.
+.TP
+.B Super\-x
+Decrease gaps between windows.
+.TP
 .B Super\-Shift\-[1..n]
 Apply nth tag to focused window.
 .TP
@@ -178,4 +211,4 @@ or
 XToolkit/XAWT backend can recognize) or when using OpenJDK setting the environment variable
 .BR _JAVA_AWT_WM_NONREPARENTING=1 .
 .SH BUGS
-Send all bug reports with a patch to hackers@suckless.org.
+Send all bug reports with a patch to hackers@suckless.org

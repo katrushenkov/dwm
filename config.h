@@ -1,3 +1,4 @@
+// test
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -11,26 +12,54 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Hack:size=9", "JoyPixels:pixelsize=8:antialias=true:autohint=true"};
+static const char *fonts[]          = { "Hack:size=9", "JoyPixels:pixelsize=9:antialias=true:autohint=true"};
 					//"FontAwesome:size=8"};
 //static const char *fonts[]          = { "terminus:size=9" };
-/*static const char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  }; */
+//static const char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
 //static const char *fonts[]            = {"Mononoki Nerd Font:size=9:antialias=true:autohint=true",
 //                                         "Hack:size=8:antialias=true:autohint=true",
 //                                         "JoyPixels:size=10:antialias=true:autohint=true"
 
-
-
-
-/* static char dmenufont[]             = "monospace:size=10"; */
 static char dmenufont[]             = "Hack:size=14";
-static char normbgcolor[]           = "#222222";
+
+//
+///* попытка сделать gruvbox */
+//static const char col_gray1[]       = "#282828";
+//static const char col_gray2[]       = "#444444";
+//static const char col_gray3[]       = "#a89984";
+//static const char col_gray4[]       = "#eeeeee";
+//static const char col_cyan[]        = "#4d6e4e";
+//static const char *colors[][3]      = {
+//	/*               fg         bg         border   */
+//	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+//	[SchemeSel]  = { col_gray1, col_cyan,  col_cyan  },
+//};
+//
+
+
+
+
+// Luke Smith (только я очернил бар)
+/* static char dmenufont[]             = "monospace:size=10"; */
+
+//static char normbgcolor[]           = "#222222";
+//static char normbordercolor[]       = "#444444";
+//static char normfgcolor[]           = "#bbbbbb";
+//static char selfgcolor[]            = "#eeeeee";
+//static char selbordercolor[]        = "#770000";
+////static char selbgcolor[]            = "#005577";
+//static char selbgcolor[]            = "#000000";
+
+// норм зеленая тема
+static char normbgcolor[]           = "#282828";
 static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
+static char normfgcolor[]           = "#a89984";
 static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#770000";
-//static char selbgcolor[]            = "#005577";
-static char selbgcolor[]            = "#000000";
+//static char selbordercolor[]        = "#770000";
+static char selbordercolor[]        = "#4d6e4e";
+static char selbgcolor[]            = "#4d6e4e";
+
+
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -212,6 +241,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
+	{ Mod1Mask,			XK_Return,	togglescratch,	{.ui = 0} },
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
@@ -250,7 +280,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mw sync") },
+	{ MODKEY,			XK_F8,		spawn,		SHCMD("mw -Y") },
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
@@ -259,6 +289,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
 //	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+
+	//{ ControlMask,			XK_Shift_L,	spawn,		SHCMD("xkblayout-state set '+1'; kill -46 $(pidof dwmblocks)") },
+	{ ControlMask,			XK_Shift_L,	spawn,		SHCMD("kill -46 $(pidof dwmblocks)") },
 	{ 0,				XK_Print,	spawn,		SHCMD("flameshot gui") },
 	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
 	{ MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") },
@@ -332,8 +365,8 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        defaultgaps,	{0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkClientWin,		MODKEY,		Button4,	incrgaps,	{.i = +1} },
-	{ ClkClientWin,		MODKEY,		Button5,	incrgaps,	{.i = -1} },
+	{ ClkClientWin,		    MODKEY,		    Button4,	    incrgaps,	    {.i = +1} },
+	{ ClkClientWin,		    MODKEY,		    Button5,	    incrgaps,	    {.i = -1} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

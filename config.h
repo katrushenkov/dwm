@@ -1,4 +1,3 @@
-// test
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -34,14 +33,9 @@ static char dmenufont[]             = "Hack:size=14";
 //	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 //	[SchemeSel]  = { col_gray1, col_cyan,  col_cyan  },
 //};
-//
 
-
-
-
-// Luke Smith (только я очернил бар)
+/* Luke Smith (with black bar) */
 /* static char dmenufont[]             = "monospace:size=10"; */
-
 //static char normbgcolor[]           = "#222222";
 //static char normbordercolor[]       = "#444444";
 //static char normfgcolor[]           = "#bbbbbb";
@@ -50,7 +44,7 @@ static char dmenufont[]             = "Hack:size=14";
 ////static char selbgcolor[]            = "#005577";
 //static char selbgcolor[]            = "#000000";
 
-// норм зеленая тема
+/* green theme for gruvbox */
 static char normbgcolor[]           = "#282828";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#a89984";
@@ -101,7 +95,8 @@ static Sp scratchpads[] = {
 
 /* tagging */
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "cli", "web", "rem", "mus", " telegram", "6", "7", "8", "9" };
+//static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -159,13 +154,38 @@ static const Layout layouts[] = {
 	/* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
 	/* { MOD, XK_x,     ACTION##stack, {.i = -1 } }, */
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+/* helpefor spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		{ "dwm.color0",		STRING,	&normbordercolor },
+		{ "dwm.color8",		STRING,	&selbordercolor },
+		{ "dwm.color0",		STRING,	&normbgcolor },
+		{ "dwm.color4",		STRING,	&normfgcolor },
+		{ "dwm.color0",		STRING,	&selfgcolor },
+		{ "dwm.color4",		STRING,	&selbgcolor },
+		{ "borderpx",		INTEGER, &borderpx },
+		{ "snap",		INTEGER, &snap },
+		{ "showbar",		INTEGER, &showbar },
+		{ "topbar",		INTEGER, &topbar },
+		{ "nmaster",		INTEGER, &nmaster },
+		{ "resizehints",	INTEGER, &resizehints },
+		{ "mfact",		FLOAT,	&mfact },
+		{ "gappih",		INTEGER, &gappih },
+		{ "gappiv",		INTEGER, &gappiv },
+		{ "gappoh",		INTEGER, &gappoh },
+		{ "gappov",		INTEGER, &gappov },
+		{ "swallowfloating",	INTEGER, &swallowfloating },
+		{ "smartgaps",		INTEGER, &smartgaps },
+};
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"

@@ -89,7 +89,7 @@ const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spcalc",    spcmd2},
 };
 
 /* tagging */
@@ -128,7 +128,7 @@ static const Layout layouts[] = {
 	{ "[@]",	spiral },		/* Fibonacci spiral */
 	{ "[\\]",	dwindle },		/* Decreasing in size right and leftward */
 
-	{ "H[]",	deck },			/* Master on left, slaves in monocle-like mode on right */
+	{ "[D]",	deck },			/* Master on left, slaves in monocle-like mode on right */
  	{ "[M]",	monocle },		/* All windows on top of eachother */
 
 	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
@@ -165,13 +165,13 @@ static const char *termcmd[]  = { "st", NULL };
 /*
  * Xresources preferences to load at startup
  */
-/* ResourcePref resources[] = {
-		{ "dwm.color0",		STRING,	&normbordercolor },
-		{ "dwm.color8",		STRING,	&selbordercolor },
-		{ "dwm.color0",		STRING,	&normbgcolor },
-		{ "dwm.color4",		STRING,	&normfgcolor },
-		{ "dwm.color0",		STRING,	&selfgcolor },
-		{ "dwm.color4",		STRING,	&selbgcolor },
+/*ResourcePref resources[] = {
+		{ "color0",		STRING,	&normbordercolor },
+		{ "color8",		STRING,	&selbordercolor },
+		{ "color0",		STRING,	&normbgcolor },
+		{ "color4",		STRING,	&normfgcolor },
+		{ "color0",		STRING,	&selfgcolor },
+		{ "color4",		STRING,	&selbgcolor },
 		{ "borderpx",		INTEGER, &borderpx },
 		{ "snap",		INTEGER, &snap },
 		{ "showbar",		INTEGER, &showbar },
@@ -237,7 +237,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("st -e sudo nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e lf") },
+	//{ MODKEY,			XK_r,		spawn,		SHCMD("st -e lf") },
+	{ MODKEY,			XK_r,		spawn,		SHCMD("remmina") },
 	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("st -e htop") },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */

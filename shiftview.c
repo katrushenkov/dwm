@@ -10,7 +10,6 @@ shiftview(const Arg *arg)
 	Client *c;
 	unsigned int tagmask = 0;
 
-
 	for (c = selmon->clients; c; c = c->next)
 		if (!(c->tags & SPTAGMASK))
 			tagmask = tagmask | c->tags;

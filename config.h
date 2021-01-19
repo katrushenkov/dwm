@@ -43,7 +43,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { " cli", " web", " rem", " pass", "mus", " telegram", "6", "7", "8" };
+static const char *tags[] = { " cli", " web", " rem", " pass", "mus", " telegram", "7", "8", "9" };
 //static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
@@ -215,11 +215,13 @@ static Key keys[] = {
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
+	{ MODKEY,			XK_Left,	shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
+	{ MODKEY,			XK_Right,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } },
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */

@@ -31,7 +31,6 @@ cd dwm
 sudo make install
 ```
 
-Users of Arch-based distros can also install it from the AUR as [dwm-luke-git](https://aur.archlinux.org/packages/dwm-luke-git).
 
 ## Please install `libxft-bgra`!
 

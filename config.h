@@ -7,11 +7,11 @@
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
-static unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
-static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+static unsigned int gappih    = 0 /* 20 */;       /* horiz inner gap between windows */
+static unsigned int gappiv    = 0 /* 10 */;       /* vert inner gap between windows */
+static unsigned int gappoh    = 0 /* 10 */;       /* horiz outer gap between windows and screen edge */
+static unsigned int gappov    = 0 /* 30 */;       /* vert outer gap between windows and screen edge */
+static int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
@@ -60,6 +60,8 @@ static const Rule rules[] = {
 	{ "firefox",  NULL,       NULL,		    2,     	  0,           0,         0,        -1 },
 	{ "org.remmina.Remmina",  NULL,   NULL,     1 << 2,    	  0,           0,         0,        -1 },
 	{ "KeePassXC",NULL,	  NULL,    	    1 << 3,   	  0,           0,         0,        -1 },
+	{ "mpv",      NULL,	  NULL,    	    0,   	  1,           0,         0,        -1 },
+	{ "gl",      NULL,	  NULL,    	    0,   	  1,           0,         0,        -1 },
 	{ NULL,	      NULL,       "Picture-in-Picture", 	  0,           1,          -1 },
 };
 
@@ -318,7 +320,6 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 5; pkill -RTMIN+11 dwmblocks") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 5; pkill -RTMIN+11 dwmblocks") },
 
-	{ Mod1Mask,			XK_w,	spawn,		SHCMD("firefox") },
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
 	/* { MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } }, */
